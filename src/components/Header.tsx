@@ -42,7 +42,7 @@ const Header: React.FC = () => {
     <>
       {/* Header */}
       <header className="fixed top-2 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-16px)] sm:w-[95%] max-w-7xl">
-        <nav className="bg-white/60 backdrop-blur-sm border border-gray-200 rounded-full px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between">
+        <nav className="bg-white/60 backdrop-blur-sm rounded-full px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between">
           {/* Logo */}
           <Link
             href="/"
