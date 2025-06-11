@@ -1,72 +1,75 @@
 "use client";
+
 import React, { useState } from "react";
-import Link from "next/link";
 import {
-  Home,
   Info,
   Briefcase,
   Folder,
   ShoppingBag,
   PenTool,
   Mail,
+  LucideIcon,
+  Home,
 } from "lucide-react";
 
 interface NavLink {
   name: string;
-  href: string;
-  icon: React.ComponentType<{ className?: string }>;
+  targetId: string;
+  icon: LucideIcon;
 }
 
 const navLinks: NavLink[] = [
-  { name: "Home", href: "/", icon: Home },
-  { name: "About", href: "/about", icon: Info },
-  { name: "Services", href: "/services", icon: Briefcase },
-  { name: "Portfolio", href: "/portfolio", icon: Folder },
-  { name: "Products", href: "/products", icon: ShoppingBag },
-  { name: "Blog", href: "/blog", icon: PenTool },
-  { name: "Contact", href: "/contact", icon: Mail },
+  { name: "Home", targetId: "home", icon: Home },
+  { name: "About", targetId: "about", icon: Info },
+  { name: "Services", targetId: "services", icon: Briefcase },
+  { name: "Portfolio", targetId: "portfolio", icon: Folder },
+  { name: "Products", targetId: "products", icon: ShoppingBag },
+  { name: "Blog", targetId: "blog", icon: PenTool },
+  { name: "Contact", targetId: "contact", icon: Mail },
 ];
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsOpen((prev) => !prev);
-  };
+  const toggleMenu = () => setIsOpen((prev) => !prev);
+  const closeMenu = () => setIsOpen(false);
 
-  const closeMenu = () => {
-    setIsOpen(false);
+  const scrollToSection = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+      closeMenu();
+    }
   };
 
   return (
     <>
-      {/* Header */}
       <header className="fixed top-2 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-16px)] sm:w-[95%] max-w-7xl">
         <nav className="bg-white/60 backdrop-blur-sm rounded-full px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between">
           {/* Logo */}
-          <Link
-            href="/"
-            className="text-amber-900 font-bold text-base sm:text-lg lg:text-xl transition-colors duration-300 flex items-center gap-2 flex-shrink-0"
+          <button
+            onClick={() => scrollToSection("home")}
+            className="text-amber-900 font-bold text-base sm:text-lg lg:text-xl transition-colors duration-300 flex items-center gap-2"
           >
             Komal Wood Work
-          </Link>
+          </button>
 
-          {/* Desktop Navigation (only on large screens) */}
+          {/* Desktop Nav */}
           <ul className="hidden lg:flex items-center gap-2 text-gray-800 font-medium text-sm lg:text-base">
-            {navLinks.map((link) => (
-              <li key={link.name}>
-                <Link
-                  href={link.href}
-                  className="flex items-center gap-1 px-3 py-2 rounded-full transition-all duration-300 hover:text-amber-600 hover:bg-amber-100/50 whitespace-nowrap"
+            {navLinks.map(({ name, targetId, icon: Icon }) => (
+              <li key={name}>
+                <button
+                  onClick={() => scrollToSection(targetId)}
+                  className="flex items-center gap-1 px-3 py-2 rounded-full text-gray-800 hover:text-amber-600 hover:bg-amber-100/50 transition-all duration-300"
                 >
-                  <link.icon className="w-5 h-5" />
-                  {link.name}
-                </Link>
+                  <Icon className="w-5 h-5" />
+                  {name}
+                </button>
               </li>
             ))}
           </ul>
 
-          {/* Mobile + Tablet Menu Button (visible below lg) */}
+          {/* Mobile Menu Toggle */}
           <button
             onClick={toggleMenu}
             aria-label="Toggle menu"
@@ -107,23 +110,22 @@ const Header: React.FC = () => {
         </nav>
       </header>
 
-      {/* Mobile + Tablet Menu */}
+      {/* Mobile Menu */}
       <div
         className={`fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-gray-200 py-6 rounded-t-3xl transition-transform duration-500 ease-in-out lg:hidden ${
           isOpen ? "translate-y-0" : "translate-y-full"
         }`}
       >
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-800 font-medium text-sm w-full px-2 sm:px-4">
-          {navLinks.map((link) => (
-            <li key={link.name} className="w-full">
-              <Link
-                href={link.href}
-                onClick={closeMenu}
-                className="flex items-center gap-2 px-4 py-3 rounded-xl transition-all duration-300 hover:text-amber-600 hover:bg-amber-100/50 text-center border border-gray-100 w-full"
+          {navLinks.map(({ name, targetId, icon: Icon }) => (
+            <li key={name} className="w-full">
+              <button
+                onClick={() => scrollToSection(targetId)}
+                className="flex items-center gap-2 px-4 py-3 rounded-xl text-gray-800 hover:text-amber-600 hover:bg-amber-100/50 border border-gray-100 w-full"
               >
-                <link.icon className="w-5 h-5 flex-shrink-0" />
-                <span className="truncate">{link.name}</span>
-              </Link>
+                <Icon className="w-5 h-5 flex-shrink-0" />
+                <span className="truncate">{name}</span>
+              </button>
             </li>
           ))}
         </ul>

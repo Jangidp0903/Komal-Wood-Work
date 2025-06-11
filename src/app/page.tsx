@@ -1,13 +1,15 @@
 "use client";
-import HeroSection from "@/components/Home/HeroSection";
+import AboutBrief from "@/components/AboutBrief";
+import HeroSection from "@/components/HeroSection";
 import React from "react";
 
-const page = () => {
+const HomePage = () => {
   return (
     <>
       <HeroSection />
+      <AboutBrief />
     </>
   );
 };
 
-export default page;
+export default HomePage;
