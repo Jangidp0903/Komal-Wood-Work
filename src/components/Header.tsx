@@ -1,6 +1,5 @@
 "use client";
-
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Info,
   Briefcase,
@@ -8,8 +7,8 @@ import {
   ShoppingBag,
   PenTool,
   Mail,
-  LucideIcon,
   Home,
+  LucideIcon,
 } from "lucide-react";
 
 interface NavLink {
@@ -22,7 +21,7 @@ const navLinks: NavLink[] = [
   { name: "Home", targetId: "home", icon: Home },
   { name: "About", targetId: "about", icon: Info },
   { name: "Services", targetId: "services", icon: Briefcase },
-  { name: "Portfolio", targetId: "portfolio", icon: Folder },
+  { name: "Projects", targetId: "projects", icon: Folder },
   { name: "Products", targetId: "products", icon: ShoppingBag },
   { name: "Blog", targetId: "blog", icon: PenTool },
   { name: "Contact", targetId: "contact", icon: Mail },
@@ -30,6 +29,7 @@ const navLinks: NavLink[] = [
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("home");
 
   const toggleMenu = () => setIsOpen((prev) => !prev);
   const closeMenu = () => setIsOpen(false);
@@ -38,18 +38,39 @@ const Header: React.FC = () => {
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
+      setActiveSection(id);
       closeMenu();
     }
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY + window.innerHeight / 2;
+      for (const { targetId } of navLinks) {
+        const section = document.getElementById(targetId);
+        if (section) {
+          const top = section.offsetTop;
+          const bottom = top + section.offsetHeight;
+          if (scrollY >= top && scrollY < bottom) {
+            setActiveSection(targetId);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
       <header className="fixed top-2 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-16px)] sm:w-[95%] max-w-7xl">
-        <nav className="bg-white/60 backdrop-blur-sm rounded-full px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between">
+        <nav className="bg-white/60 backdrop-blur-sm rounded-full px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between border border-[#4E342E]">
           {/* Logo */}
           <button
             onClick={() => scrollToSection("home")}
-            className="text-amber-900 font-bold text-base sm:text-lg lg:text-xl transition-colors duration-300 flex items-center gap-2"
+            className="text-amber-900 cursor-pointer font-bold text-base sm:text-lg lg:text-xl transition-colors duration-300 flex items-center gap-2"
           >
             Komal Wood Work
           </button>
@@ -60,7 +81,11 @@ const Header: React.FC = () => {
               <li key={name}>
                 <button
                   onClick={() => scrollToSection(targetId)}
-                  className="flex items-center gap-1 px-3 py-2 rounded-full text-gray-800 hover:text-amber-600 hover:bg-amber-100/50 transition-all duration-300"
+                  className={`flex items-center cursor-pointer gap-1 px-3 py-2 rounded-full transition-all duration-300 border ${
+                    activeSection === targetId
+                      ? "bg-amber-100 text-amber-600 border-amber-300"
+                      : "text-gray-800 hover:text-amber-600 hover:bg-amber-100/50 border-transparent"
+                  }`}
                 >
                   <Icon className="w-5 h-5" />
                   {name}
@@ -112,7 +137,7 @@ const Header: React.FC = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-gray-200 py-6 rounded-t-3xl transition-transform duration-500 ease-in-out lg:hidden ${
+        className={`fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-[#4E342E] py-6 rounded-t-3xl transition-transform duration-500 ease-in-out lg:hidden ${
           isOpen ? "translate-y-0" : "translate-y-full"
         }`}
       >
@@ -121,7 +146,11 @@ const Header: React.FC = () => {
             <li key={name} className="w-full">
               <button
                 onClick={() => scrollToSection(targetId)}
-                className="flex items-center gap-2 px-4 py-3 rounded-xl text-gray-800 hover:text-amber-600 hover:bg-amber-100/50 border border-gray-100 w-full"
+                className={`flex items-center cursor-pointer gap-2 px-4 py-3 rounded-xl border w-full transition-all duration-300 ${
+                  activeSection === targetId
+                    ? "bg-amber-100 text-amber-600 border-amber-200"
+                    : "text-gray-800 hover:text-amber-600 hover:bg-amber-100/50 border-gray-200"
+                }`}
               >
                 <Icon className="w-5 h-5 flex-shrink-0" />
                 <span className="truncate">{name}</span>

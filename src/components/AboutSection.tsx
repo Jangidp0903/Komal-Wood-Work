@@ -1,7 +1,7 @@
 import React from "react";
 import { ArrowRight, Users, Award, Target } from "lucide-react";
 
-const AboutBrief: React.FC = () => {
+const AboutSection: React.FC = () => {
   const features = [
     {
       icon: Users,
@@ -125,4 +125,4 @@ const AboutBrief: React.FC = () => {
   );
 };
 
-export default AboutBrief;
+export default AboutSection;
