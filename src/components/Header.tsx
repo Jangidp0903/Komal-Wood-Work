@@ -4,11 +4,10 @@ import {
   Info,
   Briefcase,
   Folder,
-  ShoppingBag,
-  PenTool,
   Mail,
   Home,
   LucideIcon,
+  BadgeCheck,
 } from "lucide-react";
 
 interface NavLink {
@@ -22,8 +21,7 @@ const navLinks: NavLink[] = [
   { name: "About", targetId: "about", icon: Info },
   { name: "Services", targetId: "services", icon: Briefcase },
   { name: "Projects", targetId: "projects", icon: Folder },
-  { name: "Products", targetId: "products", icon: ShoppingBag },
-  { name: "Blog", targetId: "blog", icon: PenTool },
+  { name: "Why Choose Us", targetId: "whychooseus", icon: BadgeCheck },
   { name: "Contact", targetId: "contact", icon: Mail },
 ];
 

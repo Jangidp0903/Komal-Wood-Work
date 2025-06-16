@@ -131,7 +131,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 const ProjectSection: React.FC = () => {
   return (
     <section
-      id="interior-furniture-projects"
+      id="projects"
       className="py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24 min-h-screen"
       itemScope
       itemType="https://schema.org/Service"
