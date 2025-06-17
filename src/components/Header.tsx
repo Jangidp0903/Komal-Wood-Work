@@ -87,9 +87,7 @@ const Header: React.FC = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-[#FDF6F0] shadow-sm border-b border-[#e2cbb7]"
-          : "bg-[#FDF6F0]"
+        scrolled ? "bg-[#FDF6F0] shadow-sm" : "bg-[#FDF6F0]"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

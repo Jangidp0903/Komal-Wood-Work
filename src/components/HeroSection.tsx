@@ -1,64 +1,46 @@
+"use client";
 import React from "react";
 import Image from "next/image";
-import Hero from "../../public/hero.png";
+import HeroImg from "../../public/hero.png";
 
 const HeroSection: React.FC = () => {
   return (
     <section
       id="home"
-      className="relative w-full h-[65vh] sm:h-[80vh] lg:min-h-screen overflow-hidden"
+      className="w-full bg-[#FAF6F2] text-[#5A3E36] py-10 px-5 lg:px-20"
     >
-      {/* Background Image */}
-      <div className="absolute inset-0">
-        <Image
-          src={Hero}
-          alt="Premium custom interior furniture design for modern homes"
-          fill
-          className="object-cover object-center scale-105 transition-transform duration-700 hover:scale-110"
-          priority
-          sizes="100vw"
-          quality={95}
-        />
-      </div>
-
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/60 z-10" />
-
-      {/* Content */}
-      <div className="relative z-20 flex items-center justify-center h-full px-4 sm:px-8 md:px-16 text-center">
-        <div className="max-w-5xl mx-auto text-white animate-in fade-in slide-in-from-bottom-8 transition-all duration-1000">
-          {/* Heading */}
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[3.25rem] font-extrabold leading-tight mb-6 text-center sm:text-left">
-            <span className="inline text-white mr-2">Luxury Furniture,</span>
-            <span className="inline text-[#A9825A]">Timeless Interiors</span>
+      <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-10">
+        {/* Left Content */}
+        <div className="flex-1 text-center lg:text-left">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6">
+            Your Comfort <br />
+            Zone Begins with <span className="text-[#5A3E36]">Furnizen</span>
           </h1>
-
-          {/* Subtext */}
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed font-light">
-            Elevate your interiors with handcrafted designs and timeless wooden
-            pieces — where elegance meets functionality.
+          <p className="text-base md:text-lg text-[#5A3E36]/80 max-w-xl mb-8">
+            Experience the perfect blend of quality, comfort, and design in
+            every piece. We guarantee to revamp your space and cater to your
+            unique taste and lifestyle.
           </p>
 
-          {/* CTA Button */}
-          <div className="flex justify-center">
-            <button className="group inline-flex items-center gap-3 px-6 py-3 sm:px-8 sm:py-4 bg-[#5A3E36] hover:bg-[#3E2A23] text-white rounded-full text-sm sm:text-lg md:text-xl font-semibold transition-all duration-300 shadow-lg focus:outline-none">
-              Explore Our Collection
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 7l5 5m0 0l-5 5m5-5H6"
-                />
-              </svg>
+          {/* CTA Buttons */}
+          <div className="flex flex-wrap justify-center lg:justify-start gap-4">
+            <button className="bg-[#5A3E36] text-white px-6 py-3 rounded-full font-medium hover:bg-[#3E2A23] transition">
+              Shop Now →
+            </button>
+            <button className="border border-[#5A3E36] text-[#5A3E36] px-6 py-3 rounded-full font-medium hover:bg-[#5A3E36] hover:text-white transition">
+              Explore Collection
             </button>
           </div>
+        </div>
+
+        {/* Right Image */}
+        <div className="flex-1">
+          <Image
+            src={HeroImg}
+            alt="Furniture"
+            className="rounded-3xl w-full object-cover"
+            priority
+          />
         </div>
       </div>
     </section>

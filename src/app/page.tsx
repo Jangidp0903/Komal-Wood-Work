@@ -9,7 +9,7 @@ import React from "react";
 
 const HomePage = () => {
   return (
-    <>
+    <div className="mt-16">
       {/* Hero Section */}
       <HeroSection />
 
@@ -27,7 +27,7 @@ const HomePage = () => {
 
       {/* Contact Section */}
       <ContactSection />
-    </>
+    </div>
   );
 };
 
