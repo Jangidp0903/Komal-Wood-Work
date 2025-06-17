@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "./globals.css";
 import { Metadata } from "next";
-import Script from "next/script"; // Import next/script for schema injection
+import Script from "next/script"; // For injecting structured schema
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -13,36 +13,37 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Komal Wood Work",
+  title: "Komal Wood Work | Interior & Custom Furniture Design Gurugram",
   description:
-    "Get expert fridge, washing machine & microwave repair in Gurugram. Same-day service with certified technicians, genuine parts & 24/7 affordable support.",
+    "Komal Wood Work offers custom interior design and handmade wooden furniture services in Gurugram. Elegant, modern, and space-saving designs tailored to your needs.",
   keywords: [
-    "Gurugram appliance repair",
-    "fridge repair Gurugram",
-    "washing machine repair Gurugram",
-    "microwave repair Gurugram",
-    "on-site appliance service Gurugram",
-    "same day repair Gurugram",
+    "Interior design Gurugram",
+    "Custom furniture Gurugram",
+    "Woodwork Gurugram",
+    "Modular kitchen Gurugram",
+    "Bedroom design",
+    "Living room furniture",
+    "Wardrobe design",
+    "Office furniture Gurugram",
   ],
-  authors: [{ name: "Shree Shyam Electronics" }],
+  authors: [{ name: "Komal Wood Work" }],
   robots: "index, follow",
-  metadataBase: new URL("https://shree-shyam-electronics.vercel.app"),
+  metadataBase: new URL("https://komal-wood-work.vercel.app"),
   alternates: {
-    canonical: "https://shree-shyam-electronics.vercel.app",
+    canonical: "https://komal-wood-work.vercel.app",
   },
   openGraph: {
-    title:
-      "Shree Shyam Electronics | Fridge, Washing Machine & Microwave Service",
+    title: "Komal Wood Work | Interior Design & Furniture in Gurugram",
     description:
-      "Book same-day fridge repair, washing machine repair, and microwave repair in Gurugram with certified technicians. Affordable, reliable, 24/7 support.",
-    url: "https://shree-shyam-electronics.vercel.app",
-    siteName: "Shree Shyam Electronics",
+      "Transform your home or office with Komal Wood Work's expert interior design and custom furniture services in Gurugram.",
+    url: "https://komal-wood-work.vercel.app",
+    siteName: "Komal Wood Work",
     images: [
       {
-        url: "https://shree-shyam-electronics.vercel.app/logo.png",
+        url: "https://komal-wood-work.vercel.app/logo.png",
         width: 1200,
         height: 630,
-        alt: "Certified technician repairing a washing machine and fridge",
+        alt: "Komal Wood Work - Interior Design & Furniture",
         type: "image/png",
       },
     ],
@@ -51,13 +52,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title:
-      "Gurugram Home Appliance Repair | Fridge, Washing Machine & Microwave Service",
+    title: "Komal Wood Work | Interior Design & Custom Furniture",
     description:
-      "Same-day fridge repair, washing machine repair, and microwave repair in Gurugram. Affordable, reliable service with certified technicians.",
-    images: ["https://shree-shyam-electronics.vercel.app/logo.png"],
-    site: "@ShreeShyamElect",
-    creator: "@ShreeShyamElect",
+      "Expert interior solutions and hand-crafted furniture in Gurugram. We design spaces that reflect your style and fit your budget.",
+    images: ["https://komal-wood-work.vercel.app/logo.png"],
+    site: "@KomalWoodWork",
+    creator: "@KomalWoodWork",
   },
   icons: {
     icon: "/favicon.png",
@@ -71,10 +71,10 @@ export default function RootLayout({
 }) {
   const schemaData = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: "Shree Shyam Electronics",
-    image: "https://shree-shyam-electronics.vercel.app/logo.png",
-    url: "https://shree-shyam-electronics.vercel.app",
+    "@type": "HomeAndConstructionBusiness",
+    name: "Komal Wood Work",
+    image: "https://komal-wood-work.vercel.app/logo.png",
+    url: "https://komal-wood-work.vercel.app",
     telephone: "+91-9873126033",
     address: {
       "@type": "PostalAddress",
@@ -84,17 +84,26 @@ export default function RootLayout({
       postalCode: "122002",
       addressCountry: "IN",
     },
-    openingHours: "Mo-Fr 09:00-20:00",
+    openingHours: "Mo-Sa 09:00-20:00",
     description:
-      "Expert repair of fridge, washing machine, and microwave in Gurugram with same-day service and certified technicians.",
+      "Komal Wood Work is a premium interior design and custom furniture studio based in Gurugram. We create modern wooden furniture and design beautiful homes and workspaces.",
+    priceRange: "$$",
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: "28.4595",
+      longitude: "77.0266",
+    },
+    areaServed: {
+      "@type": "Place",
+      name: "Gurugram, Haryana",
+    },
   };
 
   return (
     <html lang="en" className={dmSans.variable}>
       <head>
-        {/* Inject JSON-LD schema */}
         <Script
-          id="schema-local-business"
+          id="schema-komal-wood-work"
           type="application/ld+json"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}

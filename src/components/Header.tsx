@@ -9,6 +9,8 @@ import {
   LucideIcon,
   BadgeCheck,
 } from "lucide-react";
+import Image from "next/image";
+import Logo from "../../public/logo.png";
 
 interface NavLink {
   name: string;
@@ -27,9 +29,10 @@ const navLinks: NavLink[] = [
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState<string>("home");
+  const [activeSection, setActiveSection] = useState("home");
+  const [scrolled, setScrolled] = useState(false);
 
-  const toggleMenu = () => setIsOpen((prev) => !prev);
+  const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
 
   const scrollToSection = (id: string) => {
@@ -43,13 +46,16 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY + window.innerHeight / 2;
+      const scrollY = window.scrollY;
+      setScrolled(scrollY > 20);
+
+      const scrollPosition = scrollY + window.innerHeight / 2;
       for (const { targetId } of navLinks) {
         const section = document.getElementById(targetId);
         if (section) {
           const top = section.offsetTop;
           const bottom = top + section.offsetHeight;
-          if (scrollY >= top && scrollY < bottom) {
+          if (scrollPosition >= top && scrollPosition < bottom) {
             setActiveSection(targetId);
             break;
           }
@@ -61,42 +67,74 @@ const Header: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (isOpen && !target.closest("header")) {
+        closeMenu();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("click", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [isOpen]);
+
   return (
-    <>
-      <header className="fixed top-2 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-16px)] sm:w-[95%] max-w-7xl">
-        <nav className="bg-white/60 backdrop-blur-sm rounded-full px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between border border-[#4E342E]">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-[#FDF6F0] shadow-sm border-b border-[#e2cbb7]"
+          : "bg-[#FDF6F0]"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav className="flex items-center justify-between h-20">
           {/* Logo */}
-          <button
-            onClick={() => scrollToSection("home")}
-            className="text-amber-900 cursor-pointer font-bold text-base sm:text-lg lg:text-xl transition-colors duration-300 flex items-center gap-2"
-          >
-            Komal Wood Work
-          </button>
+          <div className="flex items-center">
+            <button
+              onClick={() => scrollToSection("home")}
+              aria-label="Komal Wood Work Logo"
+              className="focus:outline-none"
+            >
+              <Image
+                src={Logo}
+                alt="Komal Wood Work Logo"
+                width={240}
+                height={90}
+                className="h-16 sm:h-20 md:h-24 w-auto object-contain"
+                priority
+              />
+            </button>
+          </div>
 
-          {/* Desktop Nav */}
-          <ul className="hidden lg:flex items-center gap-2 text-gray-800 font-medium text-sm lg:text-base">
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center space-x-2">
             {navLinks.map(({ name, targetId, icon: Icon }) => (
-              <li key={name}>
-                <button
-                  onClick={() => scrollToSection(targetId)}
-                  className={`flex items-center cursor-pointer gap-1 px-3 py-2 rounded-full transition-all duration-300 border ${
-                    activeSection === targetId
-                      ? "bg-amber-100 text-amber-600 border-amber-300"
-                      : "text-gray-800 hover:text-amber-600 hover:bg-amber-100/50 border-transparent"
-                  }`}
-                >
-                  <Icon className="w-5 h-5" />
-                  {name}
-                </button>
-              </li>
+              <button
+                key={name}
+                onClick={() => scrollToSection(targetId)}
+                className={`flex items-center gap-2 px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  activeSection === targetId
+                    ? "bg-[#5C4033] text-white"
+                    : "text-[#5C4033] hover:text-white hover:bg-[#5C4033]"
+                }`}
+              >
+                <Icon className="w-4 h-4" />
+                <span>{name}</span>
+              </button>
             ))}
-          </ul>
+          </div>
 
-          {/* Mobile Menu Toggle */}
+          {/* Mobile Toggle */}
           <button
             onClick={toggleMenu}
-            aria-label="Toggle menu"
-            className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-[#f3f1ef] text-[#4E342E] transition"
+            className="lg:hidden w-10 h-10 flex items-center justify-center rounded-md bg-[#5C4033] text-white focus:outline-none"
+            aria-label="Toggle Menu"
           >
             <svg className="w-5 h-5 fill-current" viewBox="0 0 16 16">
               <rect
@@ -131,33 +169,32 @@ const Header: React.FC = () => {
             </svg>
           </button>
         </nav>
-      </header>
 
-      {/* Mobile Menu */}
-      <div
-        className={`fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-[#4E342E] py-6 rounded-t-3xl transition-transform duration-500 ease-in-out lg:hidden ${
-          isOpen ? "translate-y-0" : "translate-y-full"
-        }`}
-      >
-        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-800 font-medium text-sm w-full px-2 sm:px-4">
-          {navLinks.map(({ name, targetId, icon: Icon }) => (
-            <li key={name} className="w-full">
+        {/* Mobile Menu */}
+        <div
+          className={`lg:hidden transition-all duration-300 overflow-hidden ${
+            isOpen ? "max-h-[600px] pt-2 pb-4 opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <div className="grid gap-2 bg-[#FDF6F0] rounded-xl p-4 border border-[#e2cbb7]">
+            {navLinks.map(({ name, targetId, icon: Icon }) => (
               <button
+                key={name}
                 onClick={() => scrollToSection(targetId)}
-                className={`flex items-center cursor-pointer gap-2 px-4 py-3 rounded-xl border w-full transition-all duration-300 ${
+                className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-semibold transition-all duration-300 ${
                   activeSection === targetId
-                    ? "bg-amber-100 text-amber-600 border-amber-200"
-                    : "text-gray-800 hover:text-amber-600 hover:bg-amber-100/50 border-gray-200"
+                    ? "bg-[#5C4033] text-white"
+                    : "text-[#5C4033] hover:text-white hover:bg-[#5C4033]"
                 }`}
               >
-                <Icon className="w-5 h-5 flex-shrink-0" />
-                <span className="truncate">{name}</span>
+                <Icon className="w-4 h-4" />
+                <span>{name}</span>
               </button>
-            </li>
-          ))}
-        </ul>
+            ))}
+          </div>
+        </div>
       </div>
-    </>
+    </header>
   );
 };
 
