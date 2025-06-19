@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowRight, Users, Award, Target } from "lucide-react";
+import { Phone, Users, Award, Target } from "lucide-react";
 
 const AboutSection: React.FC = () => {
   const features = [
@@ -7,118 +7,109 @@ const AboutSection: React.FC = () => {
       icon: Users,
       title: "Expert Designers",
       description:
-        "Our interior designers bring vision and creativity to every furniture layout and space transformation.",
+        "Our team blends creativity and function to craft furniture that elevates your interior space.",
     },
     {
       icon: Award,
-      title: "Premium Craftsmanship",
+      title: "Quality Craftsmanship",
       description:
-        "We use high-quality wood and materials to ensure durability and elegance in all custom furniture.",
+        "We use premium wood and skilled artisanship to create durable, timeless pieces.",
     },
     {
       icon: Target,
-      title: "Client Satisfaction",
+      title: "Client-Centered Service",
       description:
-        "Our goal is to turn your dream interior into reality with personalized service and attention to detail.",
+        "Every project is tailored to your style and needs to ensure complete satisfaction.",
     },
   ];
 
   return (
-    <section id="about" className="bg-white py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Text Section */}
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <h2 className="text-4xl md:text-5xl font-bold text-[#5A3E36] leading-tight">
-                Transforming Spaces with
-                <span className="block text-[#A9825A]">Elegant Furniture</span>
-              </h2>
+    <section
+      id="about"
+      className="min-h-screen bg-[#FFFDF9] text-[#5A3E36] px-4 py-16 sm:px-6 lg:px-8"
+    >
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        {/* Text Section */}
+        <div className="space-y-6">
+          <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+            Elegant Interiors
+            <span className="block text-[#8B5A3C]">Timeless Furniture</span>
+          </h2>
 
-              <div className="w-20 h-1 bg-[#A9825A] rounded-full"></div>
+          <p className="text-lg leading-relaxed">
+            At Shree Interiors, we craft bespoke wooden furniture and design
+            modern interiors that reflect your lifestyle. Whether it&apos;s your
+            living room, kitchen, or workspace — we bring harmony through design
+            and utility.
+          </p>
 
-              <p className="text-lg text-[#5A3E36] leading-relaxed max-w-2xl">
-                At Shree Interiors, we specialize in interior design and
-                high-quality wooden furniture tailored to modern homes and
-                offices. From modular kitchens to luxurious living rooms, our
-                rich brown and white aesthetic speaks sophistication.
-              </p>
+          <p className="leading-relaxed">
+            Our rich brown tones and off-white finishes offer warmth, style, and
+            comfort, while our expert designers ensure your vision is brought to
+            life with precision and elegance.
+          </p>
 
-              <p className="text-[#5A3E36] leading-relaxed">
-                With over a decade of experience, our expert team combines
-                traditional craftsmanship with innovative design to deliver
-                bespoke interiors that enhance your lifestyle.
-              </p>
-            </div>
-
-            {/* CTA Button */}
-            <div className="pt-4">
-              <button className="group inline-flex items-center gap-3 bg-[#5A3E36] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:bg-[#3E2A23] focus:outline-none focus:ring-4 focus:ring-[#A9825A]/50">
-                Learn More About Us
-                <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-              </button>
-            </div>
-          </div>
-
-          {/* Features Grid */}
-          <div className="space-y-6">
-            <div className="grid grid-cols-1 sm:grid-cols-1 gap-6">
-              {features.map((feature, index) => {
-                const Icon = feature.icon;
-                return (
-                  <div
-                    key={index}
-                    className="group bg-[#FAF8F6] p-6 rounded-xl transition-all duration-300 border border-[#EDE7E3]"
-                  >
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-[#A9825A] rounded-lg flex items-center justify-center">
-                        <Icon className="w-6 h-6 text-white" />
-                      </div>
-                      <div className="flex-1 space-y-2">
-                        <h3 className="text-xl font-semibold text-[#5A3E36] group-hover:text-[#A9825A] transition-colors duration-300">
-                          {feature.title}
-                        </h3>
-                        <p className="text-[#5A3E36] leading-relaxed">
-                          {feature.description}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Stats */}
-            <div className="bg-[#FAF8F6] rounded-xl p-6 border border-[#EDE7E3]">
-              <div className="grid grid-cols-3 gap-4 text-center">
-                <div className="space-y-2">
-                  <div className="text-2xl md:text-3xl font-bold text-[#5A3E36]">
-                    500+
-                  </div>
-                  <div className="text-sm text-[#A9825A]">
-                    Satisfied Clients
-                  </div>
-                </div>
-                <div className="space-y-2 border-x border-[#EDE7E3]">
-                  <div className="text-2xl md:text-3xl font-bold text-[#5A3E36]">
-                    10+ Yrs
-                  </div>
-                  <div className="text-sm text-[#A9825A]">Experience</div>
-                </div>
-                <div className="space-y-2">
-                  <div className="text-2xl md:text-3xl font-bold text-[#5A3E36]">
-                    24/7
-                  </div>
-                  <div className="text-sm text-[#A9825A]">Support</div>
-                </div>
-              </div>
-            </div>
+          {/* CTA Button */}
+          <div>
+            <a
+              href="tel:+911234567890"
+              className="inline-flex items-center gap-2 bg-[#5A3E36] text-white px-6 py-3 rounded-lg text-lg font-medium"
+              aria-label="Call Now"
+            >
+              <Phone className="w-5 h-5" />
+              Call Now
+            </a>
           </div>
         </div>
 
-        {/* Decorative Line */}
-        <div className="mt-16 flex justify-center">
-          <div className="w-32 h-1 bg-gradient-to-r from-transparent via-[#A9825A] to-transparent rounded-full"></div>
+        {/* Features Section */}
+        <div className="space-y-6">
+          <div className="grid grid-cols-1 sm:grid-cols-1 gap-4">
+            {features.map((feature, index) => {
+              const Icon = feature.icon;
+              return (
+                <div
+                  key={index}
+                  className="bg-[#F4EFEB] p-5 border border-[#E5DDD7] rounded-lg"
+                >
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full">
+                    {/* Square Icon Box */}
+                    <div className="w-10 h-10 min-w-[2.5rem] min-h-[2.5rem] bg-[#8B5A3C] rounded-md flex items-center justify-center shrink-0">
+                      <Icon className="w-5 h-5 text-white" />
+                    </div>
+
+                    {/* Text Content */}
+                    <div className="min-w-0">
+                      <h3 className="text-base sm:text-lg font-semibold text-wrap">
+                        {feature.title}
+                      </h3>
+                      <p className="text-sm mt-1 text-wrap">
+                        {feature.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Stats */}
+          <div className="bg-[#F4EFEB] p-5 border border-[#E5DDD7] rounded-lg">
+            <div className="grid grid-cols-3 text-center divide-x divide-[#E5DDD7]">
+              <div>
+                <p className="text-2xl font-bold">500+</p>
+                <p className="text-sm text-[#8B5A3C]">Happy Clients</p>
+              </div>
+              <div>
+                <p className="text-2xl font-bold">10+ Yrs</p>
+                <p className="text-sm text-[#8B5A3C]">Experience</p>
+              </div>
+              <div>
+                <p className="text-2xl font-bold">24/7</p>
+                <p className="text-sm text-[#8B5A3C]">Support</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

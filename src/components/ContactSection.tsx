@@ -24,7 +24,7 @@ const ContactSection: React.FC = () => {
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="w-full bg-[#F9F6F1] py-16 px-6 md:px-12 lg:px-24"
+      className="w-full bg-[#FFFDF9] py-16 px-6 md:px-12 lg:px-24"
     >
       <header className="text-center mb-12">
         <h2

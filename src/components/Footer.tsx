@@ -41,7 +41,7 @@ const Footer: React.FC = memo(() => {
   );
 
   return (
-    <footer className="w-full bg-[#F9F6F1] text-[#4B2E2E] font-sans border-t border-[#E5D7CD]">
+    <footer className="w-full bg-[#FFFDF9] text-[#4B2E2E] font-sans border-t border-[#E5D7CD]">
       <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-12">
         {/* Company Info */}
         <div>

@@ -6,6 +6,7 @@ import {
   Paintbrush2,
   Sofa,
   Building,
+  Phone,
 } from "lucide-react";
 
 interface Service {
@@ -18,38 +19,38 @@ const services: Service[] = [
   {
     title: "Custom Furniture Design",
     description:
-      "Discover bespoke custom furniture design solutions crafted with premium, sustainable materials to match your unique space, style, and personality.",
-    icon: <Sofa className="w-10 h-10 text-primary" />,
+      "Tailored furniture crafted to match your style, space, and comfort using high-quality materials.",
+    icon: <Sofa className="w-8 h-8 text-[#8B5A3C]" />,
   },
   {
     title: "Interior Space Planning",
     description:
-      "Expert interior space planning for efficient, elegant, and functional living or working spaces, tailored to optimize your interior layout.",
-    icon: <Ruler className="w-10 h-10 text-primary" />,
+      "Efficient layout planning to maximize comfort and functionality in your home or office.",
+    icon: <Ruler className="w-8 h-8 text-[#8B5A3C]" />,
   },
   {
-    title: "Interior Renovation & Remodeling",
+    title: "Renovation & Remodeling",
     description:
-      "Transform your interiors with expert interior renovation and home remodeling services, blending aesthetics, functionality, and modern space transformation.",
-    icon: <Hammer className="w-10 h-10 text-primary" />,
+      "Upgrade your interiors with expert renovation solutions that align with your vision.",
+    icon: <Hammer className="w-8 h-8 text-[#8B5A3C]" />,
   },
   {
-    title: "Interior Lighting Solutions",
+    title: "Lighting Design",
     description:
-      "Elegant interior lighting design solutions to enhance ambiance and complement your furniture and decor with ambient lighting.",
-    icon: <LampDesk className="w-10 h-10 text-primary" />,
+      "Stylish and functional lighting solutions that enhance your interior aesthetics.",
+    icon: <LampDesk className="w-8 h-8 text-[#8B5A3C]" />,
   },
   {
     title: "Wall & Paint Finishing",
     description:
-      "Creative wall finishing and interior painting services, offering decorative textures to add character and sophistication to every room.",
-    icon: <Paintbrush2 className="w-10 h-10 text-primary" />,
+      "Elegant finishes and custom paint solutions to elevate the ambiance of any space.",
+    icon: <Paintbrush2 className="w-8 h-8 text-[#8B5A3C]" />,
   },
   {
-    title: "Commercial Interior Design",
+    title: "Commercial Interiors",
     description:
-      "Professional commercial interior design for offices, studios, and retail spaces, customized to reflect your brand with expert office and retail space design.",
-    icon: <Building className="w-10 h-10 text-primary" />,
+      "Office, retail, and studio design tailored to reflect your brand identity.",
+    icon: <Building className="w-8 h-8 text-[#8B5A3C]" />,
   },
 ];
 
@@ -57,47 +58,51 @@ const ServiceSection: React.FC = () => {
   return (
     <section
       id="services"
-      className="py-16 px-4 sm:px-6 md:px-8 lg:px-16 bg-neutral-50"
+      className="min-h-screen bg-[#FFFDF9] px-4 py-16 sm:px-6 lg:px-24"
       aria-labelledby="services-heading"
     >
       <div className="max-w-7xl mx-auto">
         <h2
           id="services-heading"
-          className="text-3xl sm:text-4xl md:text-5xl font-bold text-neutral-900 mb-6 text-center"
+          className="text-3xl md:text-4xl font-bold text-[#8B5A3C] text-center mb-4"
         >
-          Premium Interior Design & Furniture Services
+          Interior Furniture & Design Services
         </h2>
-        <p className="text-neutral-600 text-base sm:text-lg mb-12 text-center">
-          Explore our expert interior design and furniture services, creating
-          timeless, personalized spaces for homes and businesses with custom
-          furniture and innovative layouts.
+        <p className="text-center text-base md:text-lg text-neutral-700 mb-12 max-w-3xl mx-auto">
+          Transform your space with custom furniture, elegant layouts, and
+          refined finishes crafted to match your lifestyle and personality.
         </p>
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
             <article
               key={index}
-              className="flex flex-col bg-white border border-neutral-200 p-8 rounded-2xl"
+              className="flex flex-col items-start bg-white border border-neutral-200 p-6 rounded-xl"
               itemScope
               itemType="http://schema.org/Service"
             >
-              <div className="p-4 rounded-full bg-primary/10 mb-6 w-fit">
-                {service.icon}
-              </div>
+              <div className="mb-4">{service.icon}</div>
               <h3
-                className="text-xl font-semibold text-neutral-900 mb-3"
+                className="text-lg font-semibold text-[#8B5A3C] mb-2"
                 itemProp="name"
               >
                 {service.title}
               </h3>
-              <p
-                className="text-base text-neutral-600 leading-relaxed"
-                itemProp="description"
-              >
+              <p className="text-sm text-neutral-800" itemProp="description">
                 {service.description}
               </p>
             </article>
           ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <a
+            href="tel:+919999999999"
+            className="inline-flex items-center gap-2 bg-[#8B5A3C] text-white px-6 py-3 text-base font-medium rounded-full"
+          >
+            <Phone className="w-4 h-4" />
+            Call Now
+          </a>
         </div>
       </div>
     </section>
