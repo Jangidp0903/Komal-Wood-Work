@@ -33,7 +33,7 @@ const projects: Project[] = [
     description:
       "Custom bedroom furniture with high-quality craftsmanship for cozy and luxurious interiors, ideal for modern apartments.",
     image:
-      "https://images.unsplash.com/photo-1615529182904-7c4b8c7e8a8a?w=400&h=300&fit=crop&auto=format",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=300&fit=crop&auto=format",
     category: "Bedroom",
   },
   {
@@ -42,7 +42,7 @@ const projects: Project[] = [
     description:
       "Stylish dining furniture designed for functionality and aesthetic appeal, enhancing dining experiences in modern homes.",
     image:
-      "https://images.unsplash.com/photo-1618219744096-3c260577d4cb?w=400&h=300&fit=crop&auto=format",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=300&fit=crop&auto=format",
     category: "Dining Room",
   },
   {
@@ -51,7 +51,7 @@ const projects: Project[] = [
     description:
       "Ergonomic office furniture for productive and comfortable home workspaces, tailored for professional environments.",
     image:
-      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=400&h=300&fit=crop&auto=format",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=300&fit=crop&auto=format",
     category: "Office",
   },
   {
@@ -60,7 +60,7 @@ const projects: Project[] = [
     description:
       "Contemporary kitchen furniture and cabinetry solutions that combine functionality with elegant design for modern cooking spaces.",
     image:
-      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop&auto=format",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=300&fit=crop&auto=format",
     category: "Kitchen",
   },
   {
@@ -69,7 +69,7 @@ const projects: Project[] = [
     description:
       "Premium bathroom furniture and storage solutions designed for luxury bathrooms with modern amenities and spa-like comfort.",
     image:
-      "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=400&h=300&fit=crop&auto=format",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=300&fit=crop&auto=format",
     category: "Bathroom",
   },
 ];
