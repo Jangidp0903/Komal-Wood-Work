@@ -1,7 +1,13 @@
-"use client";
-
 import React from "react";
 import Image from "next/image";
+import {
+  BedDouble,
+  CookingPot,
+  Sofa,
+  Bath,
+  Building2,
+  Briefcase,
+} from "lucide-react";
 
 interface Project {
   id: number;
@@ -9,75 +15,78 @@ interface Project {
   description: string;
   image: string;
   category: string;
-}
-
-interface ProjectCardProps {
-  project: Project;
+  icon: React.ReactNode;
 }
 
 const projects: Project[] = [
   {
     id: 1,
-    title: "Luxury Living Room Design",
+    title: "Custom Bedroom Furniture",
     description:
-      "High-end living room interiors with elegant furniture tailored for comfort and modern luxury homes.",
+      "Tailor-made beds, side tables, and wardrobes designed for comfort and elegance.",
     image:
-      "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=800&h=600&fit=crop&auto=format",
-    category: "Living Room",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&auto=format",
+    category: "Bedroom",
+    icon: <BedDouble className="text-white w-4 h-4" />,
   },
   {
     id: 2,
-    title: "Elegant Bedroom Setup",
+    title: "Modular Kitchen Setup",
     description:
-      "Custom bedroom interiors using rich wood tones and sleek furniture to create warm and restful spaces.",
+      "Modern kitchen cabinets and countertops that combine style and utility.",
     image:
-      "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=800&h=600&fit=crop&auto=format",
-    category: "Bedroom",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&auto=format",
+    category: "Kitchen",
+    icon: <CookingPot className="text-white w-4 h-4" />,
   },
   {
     id: 3,
-    title: "Contemporary Dining Area",
+    title: "Luxury Sofa Design",
     description:
-      "Spacious dining setups with premium tables and chairs for elegant dining experiences.",
+      "Plush sofas crafted with premium materials to enhance your living space.",
     image:
-      "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=800&h=600&fit=crop&auto=format",
-    category: "Dining Room",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&auto=format",
+    category: "Sofa",
+    icon: <Sofa className="text-white w-4 h-4" />,
   },
   {
     id: 4,
-    title: "Home Office Elegance",
+    title: "Modern Bathroom Vanity",
     description:
-      "Functional and modern home office furniture ideal for remote work professionals.",
+      "Elegant vanities and storage designed to bring style to your bathroom.",
     image:
-      "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=800&h=600&fit=crop&auto=format",
-    category: "Office",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&auto=format",
+    category: "Bathroom",
+    icon: <Bath className="text-white w-4 h-4" />,
   },
   {
     id: 5,
-    title: "Modern Kitchen Space",
+    title: "Home Office Setup",
     description:
-      "Modular kitchen units that blend functionality and elegance for contemporary homes.",
+      "Functional and aesthetic furniture tailored for productivity at home.",
     image:
-      "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=800&h=600&fit=crop&auto=format",
-    category: "Kitchen",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&auto=format",
+    category: "Office",
+    icon: <Briefcase className="text-white w-4 h-4" />,
   },
   {
     id: 6,
-    title: "Luxury Bathroom Vanity",
+    title: "Full Interior Projects",
     description:
-      "Stylish bathroom vanity sets crafted to bring elegance and utility to spa-like bathrooms.",
+      "Complete space transformation—from concept to execution—for homes & studios.",
     image:
-      "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=800&h=600&fit=crop&auto=format",
-    category: "Bathroom",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&auto=format",
+    category: "Interior",
+    icon: <Building2 className="text-white w-4 h-4" />,
   },
 ];
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   return (
     <article
-      className="border border-[#8B5A3C] bg-[#FAF6F2] rounded-md overflow-hidden w-full"
+      className="border border-[#8B5A3C] bg-[#FAF6F2] rounded-xl overflow-hidden transition-all duration-300 w-full"
       itemScope
-      itemType="https://schema.org/Product"
+      itemType="https://schema.org/Service"
     >
       <div className="relative w-full h-48 md:h-60 lg:h-64 xl:h-72">
         <Image
@@ -89,20 +98,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           priority={project.id <= 2}
           itemProp="image"
         />
-        <div className="absolute top-2 left-2">
-          <span className="text-xs font-medium bg-[#8B5A3C] text-white px-2 py-1 rounded">
-            {project.category}
-          </span>
+        <div className="absolute top-3 left-3 flex items-center gap-1 bg-[#8B5A3C] text-white text-xs px-2 py-1 rounded">
+          {project.icon}
+          <span itemProp="serviceType">{project.category}</span>
         </div>
       </div>
-
       <div className="p-4">
-        <h3
-          className="text-lg font-semibold text-[#8B5A3C] mb-2"
-          itemProp="name"
-        >
+        <h2 className="text-lg font-bold text-[#8B5A3C] mb-2" itemProp="name">
           {project.title}
-        </h3>
+        </h2>
         <p
           className="text-sm text-[#5C4033] leading-relaxed"
           itemProp="description"
@@ -118,24 +122,24 @@ const ProjectSection: React.FC = () => {
   return (
     <section
       id="projects"
-      className="min-h-screen py-12 bg-[#FFFDF9]"
+      className="min-h-screen py-14 bg-[#FFFDF9]"
       itemScope
       itemType="https://schema.org/Service"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <header className="text-center mb-10">
+        <header className="text-center mb-12">
           <h1
             className="text-3xl md:text-4xl font-bold text-[#8B5A3C]"
             itemProp="name"
           >
-            Interior Furniture Projects
+            Custom Interior Furniture Services
           </h1>
           <p
-            className="text-sm md:text-base text-[#5C4033] mt-2 max-w-3xl mx-auto"
+            className="text-sm md:text-base text-[#5C4033] mt-3 max-w-2xl mx-auto"
             itemProp="description"
           >
-            Explore our bespoke furniture work—crafted with care, elegance, and
-            precision to elevate living, working, and relaxing spaces.
+            From modular kitchens to custom sofas, explore how we transform
+            interiors with functional, stylish furniture made just for you.
           </p>
         </header>
 

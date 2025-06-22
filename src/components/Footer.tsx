@@ -27,14 +27,14 @@ const Footer: React.FC = memo(() => {
     () => [
       { day: "Mon - Fri", hours: "9:00 AM - 7:00 PM" },
       { day: "Saturday", hours: "10:00 AM - 6:00 PM" },
-      { day: "Sunday", hours: "Closed" },
+      { day: "Sunday", hours: "10:00 AM - 4:00 PM" },
     ],
     []
   );
 
-  const features = useMemo(
+  const highlights = useMemo(
     () => [
-      { icon: ShieldCheck, text: "Premium Quality" },
+      { icon: ShieldCheck, text: "Premium Materials" },
       { icon: Brush, text: "Elegant Finishing" },
     ],
     []
@@ -42,21 +42,22 @@ const Footer: React.FC = memo(() => {
 
   return (
     <footer className="w-full bg-[#FFFDF9] text-[#4B2E2E] font-sans border-t border-[#E5D7CD]">
-      <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-12">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
         {/* Company Info */}
         <div>
           <h2 className="text-2xl font-bold mb-3">
             Komal <span className="text-[#4B2E2E]/80">Wood Work</span>
           </h2>
           <p className="text-sm leading-relaxed mb-4 max-w-sm">
-            Custom interior furniture solutions crafted with care, quality, and
-            a timeless aesthetic for every space in your home.
+            We specialize in making custom interior furniture including modular
+            kitchens, beds, wardrobes, and sofas. Crafted with care and built
+            for timeless elegance and comfort.
           </p>
           <ul className="flex flex-wrap gap-3 mt-4">
-            {features.map((item, index) => (
+            {highlights.map((item, index) => (
               <li
                 key={index}
-                className="flex items-center border border-[#D8CFC5] bg-white px-3 py-1 rounded-full text-sm"
+                className="flex items-center border border-[#D8CFC5] bg-[#FFFDF9] px-3 py-1 rounded-full text-sm"
               >
                 <item.icon className="h-4 w-4 mr-2 text-[#4B2E2E]" />
                 {item.text}
@@ -67,7 +68,7 @@ const Footer: React.FC = memo(() => {
 
         {/* Contact Info */}
         <div>
-          <h3 className="text-lg font-semibold mb-4">Contact</h3>
+          <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
           <ul className="space-y-4 text-sm">
             {contactDetails.map((contact, index) => (
               <li key={index} className="flex items-start space-x-3">
@@ -76,7 +77,7 @@ const Footer: React.FC = memo(() => {
                   <p className="font-medium">{contact.label}</p>
                   <a
                     href={contact.href}
-                    className="block text-[#4B2E2E]/80 break-words"
+                    className="block text-[#4B2E2E]/80 break-words hover:underline"
                   >
                     {contact.value}
                   </a>
@@ -101,11 +102,8 @@ const Footer: React.FC = memo(() => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="bg-white border-t border-[#E5D7CD] py-4 text-center text-sm">
-        <p>
-          © {currentYear} Komal Wood Work. All rights reserved. | Crafted with
-          care in India
-        </p>
+      <div className="bg-[#FDF7F2] border-t border-[#E5D7CD] py-4 text-center text-sm">
+        <p>© {currentYear} Komal Wood Work. All rights reserved.</p>
       </div>
     </footer>
   );
