@@ -28,19 +28,19 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Komal Wood Work" }],
   robots: "index, follow",
-  metadataBase: new URL("https://komal-wood-work.vercel.app"),
+  metadataBase: new URL("https://komalwoodwork.vercel.app"),
   alternates: {
-    canonical: "https://komal-wood-work.vercel.app",
+    canonical: "https://komalwoodwork.vercel.app",
   },
   openGraph: {
     title: "Komal Wood Work | Interior Design & Furniture in Gurugram",
     description:
       "Transform your home or office with Komal Wood Work's expert interior design and custom furniture services in Gurugram.",
-    url: "https://komal-wood-work.vercel.app",
+    url: "https://komalwoodwork.vercel.app",
     siteName: "Komal Wood Work",
     images: [
       {
-        url: "https://komal-wood-work.vercel.app/logo.png",
+        url: "https://komalwoodwork.vercel.app/logo.png",
         width: 1200,
         height: 630,
         alt: "Komal Wood Work - Interior Design & Furniture",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     title: "Komal Wood Work | Interior Design & Custom Furniture",
     description:
       "Expert interior solutions and hand-crafted furniture in Gurugram. We design spaces that reflect your style and fit your budget.",
-    images: ["https://komal-wood-work.vercel.app/logo.png"],
+    images: ["https://komalwoodwork.vercel.app/logo.png"],
     site: "@KomalWoodWork",
     creator: "@KomalWoodWork",
   },
@@ -73,8 +73,8 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",
     name: "Komal Wood Work",
-    image: "https://komal-wood-work.vercel.app/logo.png",
-    url: "https://komal-wood-work.vercel.app",
+    image: "https://komalwoodwork.vercel.app/logo.png",
+    url: "https://komalwoodwork.vercel.app",
     telephone: "+91-9873126033",
     address: {
       "@type": "PostalAddress",
