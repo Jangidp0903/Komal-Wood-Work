@@ -128,12 +128,12 @@ const ProjectSection: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <header className="text-center mb-12">
-          <h1
+          <h2
             className="text-3xl md:text-4xl font-bold text-[#8B5A3C]"
             itemProp="name"
           >
             Custom Interior Furniture Services
-          </h1>
+          </h2>
           <p
             className="text-sm md:text-base text-[#5C4033] mt-3 max-w-2xl mx-auto"
             itemProp="description"
