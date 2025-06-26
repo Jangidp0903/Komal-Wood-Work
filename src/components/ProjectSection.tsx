@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import {
   BedDouble,
   CookingPot,
@@ -8,12 +8,18 @@ import {
   Building2,
   Briefcase,
 } from "lucide-react";
+import Bedroom from "../../public/bedroom.png";
+import Kitchen from "../../public/kitchen.png";
+import Sofaa from "../../public/sofa.png";
+import Bathroom from "../../public/bathroom.png";
+import Office from "../../public/office.png";
+import Interior from "../../public/interior.png";
 
 interface Project {
   id: number;
   title: string;
   description: string;
-  image: string;
+  image: string | StaticImageData;
   category: string;
   icon: React.ReactNode;
 }
@@ -24,8 +30,7 @@ const projects: Project[] = [
     title: "Custom Bedroom Furniture",
     description:
       "Tailor-made beds, side tables, and wardrobes designed for comfort and elegance.",
-    image:
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&auto=format",
+    image: Bedroom,
     category: "Bedroom",
     icon: <BedDouble className="text-white w-4 h-4" />,
   },
@@ -34,8 +39,7 @@ const projects: Project[] = [
     title: "Modular Kitchen Setup",
     description:
       "Modern kitchen cabinets and countertops that combine style and utility.",
-    image:
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&auto=format",
+    image: Kitchen,
     category: "Kitchen",
     icon: <CookingPot className="text-white w-4 h-4" />,
   },
@@ -44,8 +48,7 @@ const projects: Project[] = [
     title: "Luxury Sofa Design",
     description:
       "Plush sofas crafted with premium materials to enhance your living space.",
-    image:
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&auto=format",
+    image: Sofaa,
     category: "Sofa",
     icon: <Sofa className="text-white w-4 h-4" />,
   },
@@ -54,8 +57,7 @@ const projects: Project[] = [
     title: "Modern Bathroom Vanity",
     description:
       "Elegant vanities and storage designed to bring style to your bathroom.",
-    image:
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&auto=format",
+    image: Bathroom,
     category: "Bathroom",
     icon: <Bath className="text-white w-4 h-4" />,
   },
@@ -64,8 +66,7 @@ const projects: Project[] = [
     title: "Home Office Setup",
     description:
       "Functional and aesthetic furniture tailored for productivity at home.",
-    image:
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&auto=format",
+    image: Office,
     category: "Office",
     icon: <Briefcase className="text-white w-4 h-4" />,
   },
@@ -74,8 +75,7 @@ const projects: Project[] = [
     title: "Full Interior Projects",
     description:
       "Complete space transformation—from concept to execution—for homes & studios.",
-    image:
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&auto=format",
+    image: Interior,
     category: "Interior",
     icon: <Building2 className="text-white w-4 h-4" />,
   },
