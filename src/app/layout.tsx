@@ -13,9 +13,9 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Komal Wood Work | Interior & Custom Furniture Design Gurugram",
+  title: "Komal Wood Work | Custom Furniture & Interiors",
   description:
-    "Komal Wood Work offers custom interior design and handmade wooden furniture services in Gurugram. Elegant, modern, and space-saving designs tailored to your needs.",
+    "Custom interiors & handmade wooden furniture by Komal Wood Work in Gurugram. Modern, elegant & space-saving designs made for your needs.",
   keywords: [
     "Interior design Gurugram",
     "Custom furniture Gurugram",
