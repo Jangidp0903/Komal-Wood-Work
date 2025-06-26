@@ -10,8 +10,8 @@ const Footer: React.FC = memo(() => {
       {
         icon: <Phone className="h-5 w-5 text-[#4B2E2E]" />,
         label: "Phone",
-        value: "+91 98765 43210",
-        href: "tel:+919876543210",
+        value: "+91 9971377441",
+        href: "tel:+919971377441",
       },
       {
         icon: <Mail className="h-5 w-5 text-[#4B2E2E]" />,

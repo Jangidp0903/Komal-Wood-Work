@@ -55,7 +55,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className = "" }) => {
           {/* CTA Button */}
           <div className="pt-6">
             <a
-              href="tel:+919999999999"
+              href="tel:+919971377441"
               className="inline-flex items-center gap-2 bg-[#4A2C24] text-[#FFFDF9] px-6 py-3 rounded-lg text-sm font-semibold hover:bg-[#8B4A2F] transition-colors focus:outline-none focus:ring-2 focus:ring-[#8B4A2F] focus:ring-offset-2"
               aria-label="Call now for custom furniture consultation"
             >

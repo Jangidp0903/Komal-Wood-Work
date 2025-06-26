@@ -17,8 +17,8 @@ const contactDetails: ContactItem[] = [
   {
     icon: <Phone className="h-6 w-6 text-[#4B2E2E]" aria-hidden="true" />,
     label: "Customer Support",
-    value: "+91 99888 77665",
-    link: "tel:+919988877665",
+    value: "+91 9971377441",
+    link: "tel:+919971377441",
   },
   {
     icon: <Mail className="h-6 w-6 text-[#4B2E2E]" aria-hidden="true" />,

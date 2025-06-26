@@ -63,7 +63,7 @@ const AboutSection: React.FC = () => {
             tailored to your unique vision.
           </p>
           <a
-            href="tel:+911234567890"
+            href="tel:+919971377441"
             className="inline-flex items-center gap-2 bg-[#5A3E36] text-white px-6 py-3 rounded-md text-base font-medium hover:bg-[#6B4A3F] transition-colors duration-200 w-fit"
             aria-label="Contact Komal Wood Work for custom furniture"
           >
