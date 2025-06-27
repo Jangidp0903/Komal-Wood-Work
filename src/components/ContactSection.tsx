@@ -23,8 +23,8 @@ const contactDetails: ContactItem[] = [
   {
     icon: <Mail className="h-6 w-6 text-[#4B2E2E]" aria-hidden="true" />,
     label: "Email Us",
-    value: "support@interiorcrafts.in",
-    link: "mailto:support@interiorcrafts.in",
+    value: "m.kumar8802@gmail.com",
+    link: "mailto:m.kumar8802@gmail.com",
   },
 ];
 

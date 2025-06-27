@@ -16,8 +16,8 @@ const Footer: React.FC = memo(() => {
       {
         icon: <Mail className="h-5 w-5 text-[#4B2E2E]" />,
         label: "Email",
-        value: "komalwoodwork@example.com",
-        href: "mailto:komalwoodwork@example.com",
+        value: "m.kumar8802@gmail.com",
+        href: "mailto:m.kumar8802@gmail.com",
       },
     ],
     []
