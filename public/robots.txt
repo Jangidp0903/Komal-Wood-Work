@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://komalwoodwork.vercel.app
+Host: https://komalwoodwork.com
 
 # Sitemaps
-Sitemap: https://komalwoodwork.vercel.app/sitemap.xml
+Sitemap: https://komalwoodwork.com/sitemap.xml

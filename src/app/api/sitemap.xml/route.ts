@@ -2,7 +2,7 @@
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  const baseUrl = "https://komalwoodwork.vercel.app";
+  const baseUrl = "https://komalwoodwork.com";
   const lastMod = new Date().toISOString();
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
