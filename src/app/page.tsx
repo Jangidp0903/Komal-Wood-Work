@@ -30,10 +30,10 @@ const HomePage = () => {
 
       {/* WhatsApp Floating Button */}
       <a
-        href="https://wa.me/919971377441?text=Hi%20Shree%20Shyam%2C%20I%20need%20fridge%2C%20washing%20machine%2C%20or%20microwave%20repair%20in%20Gurugram."
+        href="https://wa.me/919971377441?text=Hi%20Komal%20Wood%20Work%2C%20I%20am%20interested%20in%20your%20interior%20furniture%20design%20services.%20Please%20share%20more%20details."
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Chat on WhatsApp for fridge, washing machine, or microwave repair in Gurugram"
+        aria-label="Chat on WhatsApp for interior furniture design services from Komal Wood Work"
         className="fixed bottom-5 right-5 z-50 w-12 h-12"
       >
         <svg
