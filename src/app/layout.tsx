@@ -28,19 +28,19 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Komal Wood Work" }],
   robots: "index, follow",
-  metadataBase: new URL("https://komalwoodwork.vercel.app"),
+  metadataBase: new URL("https://komalwoodwork.com"),
   alternates: {
-    canonical: "https://komalwoodwork.vercel.app",
+    canonical: "https://komalwoodwork.com",
   },
   openGraph: {
     title: "Komal Wood Work | Interior Design & Furniture in Gurugram",
     description:
       "Transform your home or office with Komal Wood Work's expert interior design and custom furniture services in Gurugram.",
-    url: "https://komalwoodwork.vercel.app",
+    url: "https://komalwoodwork.com",
     siteName: "Komal Wood Work",
     images: [
       {
-        url: "https://komalwoodwork.vercel.app/logo.png",
+        url: "https://komalwoodwork.com/logo.png",
         width: 1200,
         height: 630,
         alt: "Komal Wood Work - Interior Design & Furniture",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     title: "Komal Wood Work | Interior Design & Custom Furniture",
     description:
       "Expert interior solutions and hand-crafted furniture in Gurugram. We design spaces that reflect your style and fit your budget.",
-    images: ["https://komalwoodwork.vercel.app/logo.png"],
+    images: ["https://komalwoodwork.com/logo.png"],
     site: "@KomalWoodWork",
     creator: "@KomalWoodWork",
   },
@@ -73,15 +73,15 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",
     name: "Komal Wood Work",
-    image: "https://komalwoodwork.vercel.app/logo.png",
-    url: "https://komalwoodwork.vercel.app",
-    telephone: "+91-9873126033",
+    image: "https://komalwoodwork.com/logo.png",
+    url: "https://komalwoodwork.com/",
+    telephone: "+91-9971377441",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Wazirabad",
       addressLocality: "Gurugram",
       addressRegion: "Haryana",
-      postalCode: "122002",
+      postalCode: "122001",
       addressCountry: "IN",
     },
     openingHours: "Mo-Sa 09:00-20:00",
