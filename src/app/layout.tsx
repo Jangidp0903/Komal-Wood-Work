@@ -59,9 +59,9 @@ export const metadata: Metadata = {
     site: "@KomalWoodWork",
     creator: "@KomalWoodWork",
   },
-  // icons: {
-  //   icon: "/favicon.png",
-  // },
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
@@ -102,9 +102,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={dmSans.variable}>
       <head>
-        <link rel="icon" href="/favicon.png" type="image/png" sizes="512x512" />
-  <link rel="apple-touch-icon" href="/favicon.png" />
-  <meta name="theme-color" content="#ffffff" />
         <Script
           id="schema-komal-wood-work"
           type="application/ld+json"
