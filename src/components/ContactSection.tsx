@@ -12,7 +12,7 @@ const contactDetails: ContactItem[] = [
   {
     icon: <MapPin className="h-6 w-6 text-[#4B2E2E]" aria-hidden="true" />,
     label: "Workshop Address",
-    value: "Plot 45, Furniture Street, Jaipur, Rajasthan, IN 302012",
+    value: "Shop No. 281, Vishnu Garden, Rajendra Park, Gurugram, Haryana – 122001",
   },
   {
     icon: <Phone className="h-6 w-6 text-[#4B2E2E]" aria-hidden="true" />,
