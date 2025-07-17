@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     creator: "@KomalWoodWork",
   },
   icons: {
-    icon: "/favicon.png",
+    icon: "/favicon.ico",
   },
 };
 
