@@ -103,6 +103,19 @@ export default function RootLayout({
     <html lang="en" className={dmSans.variable}>
       <head>
         <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-3G96CEYZ6K"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-3G96CEYZ6K');
+          `}
+        </Script>
+
+        <Script
           id="schema-komal-wood-work"
           type="application/ld+json"
           strategy="afterInteractive"
