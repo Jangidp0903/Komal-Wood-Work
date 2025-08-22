@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import {
   BedDouble,
@@ -7,7 +7,10 @@ import {
   Bath,
   Building2,
   Briefcase,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
+
 import Bedroom from "../../public/bedroom.png";
 import Kitchen from "../../public/kitchen.png";
 import Sofaa from "../../public/sofa.png";
@@ -84,7 +87,7 @@ const projects: Project[] = [
 const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   return (
     <article
-      className="border border-[#8B5A3C] bg-[#FAF6F2] rounded-xl overflow-hidden transition-all duration-300 w-full"
+      className="border border-[#8B5A3C] bg-[#FAF6F2] rounded-lg overflow-hidden w-full"
       itemScope
       itemType="https://schema.org/Service"
     >
@@ -119,6 +122,16 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
 };
 
 const ProjectSection: React.FC = () => {
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const projectsPerPage = 3;
+
+  // Pagination Logic
+  const indexOfLast = currentPage * projectsPerPage;
+  const indexOfFirst = indexOfLast - projectsPerPage;
+  const currentProjects = projects.slice(indexOfFirst, indexOfLast);
+
+  const totalPages = Math.ceil(projects.length / projectsPerPage);
+
   return (
     <section
       id="projects"
@@ -145,9 +158,44 @@ const ProjectSection: React.FC = () => {
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project) => (
+          {currentProjects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
+        </div>
+
+        {/* Pagination Controls */}
+        <div className="flex flex-col sm:flex-row justify-between items-center mt-10 gap-4">
+          {/* Left Side Info */}
+          <div className="text-sm text-[#5C4033] text-center sm:text-left">
+            Showing{" "}
+            <span className="font-semibold">
+              {indexOfFirst + 1}-{Math.min(indexOfLast, projects.length)}
+            </span>{" "}
+            of <span className="font-semibold">{projects.length}</span> projects
+          </div>
+
+          {/* Right Side Controls */}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+              className="flex items-center gap-1 px-3 py-1 border border-[#8B5A3C] rounded text-[#8B5A3C] text-sm disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+            >
+              <ChevronLeft className="w-4 h-4" />
+              Prev
+            </button>
+
+            <button
+              onClick={() =>
+                setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+              }
+              disabled={currentPage === totalPages}
+              className="flex items-center gap-1 px-3 py-1 border border-[#8B5A3C] rounded text-[#8B5A3C] text-sm disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+            >
+              Next
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
         </div>
       </div>
     </section>
