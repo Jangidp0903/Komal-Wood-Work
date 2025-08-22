@@ -1,90 +1,13 @@
 import React, { useState } from "react";
-import Image, { StaticImageData } from "next/image";
-import {
-  BedDouble,
-  CookingPot,
-  Sofa,
-  Bath,
-  Building2,
-  Briefcase,
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
+import Image from "next/image";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Project, projects } from "@/app/data/projectsData";
 
-import Bedroom from "../../public/bedroom.png";
-import Kitchen from "../../public/kitchen.png";
-import Sofaa from "../../public/sofa.png";
-import Bathroom from "../../public/bathroom.png";
-import Office from "../../public/office.png";
-import Interior from "../../public/interior.png";
-
-interface Project {
-  id: number;
-  title: string;
-  description: string;
-  image: string | StaticImageData;
-  category: string;
-  icon: React.ReactNode;
+interface ProjectCardProps {
+  project: Project;
 }
 
-const projects: Project[] = [
-  {
-    id: 1,
-    title: "Custom Bedroom Furniture",
-    description:
-      "Tailor-made beds, side tables, and wardrobes designed for comfort and elegance.",
-    image: Bedroom,
-    category: "Bedroom",
-    icon: <BedDouble className="text-white w-4 h-4" />,
-  },
-  {
-    id: 2,
-    title: "Modular Kitchen Setup",
-    description:
-      "Modern kitchen cabinets and countertops that combine style and utility.",
-    image: Kitchen,
-    category: "Kitchen",
-    icon: <CookingPot className="text-white w-4 h-4" />,
-  },
-  {
-    id: 3,
-    title: "Luxury Sofa Design",
-    description:
-      "Plush sofas crafted with premium materials to enhance your living space.",
-    image: Sofaa,
-    category: "Sofa",
-    icon: <Sofa className="text-white w-4 h-4" />,
-  },
-  {
-    id: 4,
-    title: "Modern Bathroom Vanity",
-    description:
-      "Elegant vanities and storage designed to bring style to your bathroom.",
-    image: Bathroom,
-    category: "Bathroom",
-    icon: <Bath className="text-white w-4 h-4" />,
-  },
-  {
-    id: 5,
-    title: "Home Office Setup",
-    description:
-      "Functional and aesthetic furniture tailored for productivity at home.",
-    image: Office,
-    category: "Office",
-    icon: <Briefcase className="text-white w-4 h-4" />,
-  },
-  {
-    id: 6,
-    title: "Full Interior Projects",
-    description:
-      "Complete space transformation—from concept to execution—for homes & studios.",
-    image: Interior,
-    category: "Interior",
-    icon: <Building2 className="text-white w-4 h-4" />,
-  },
-];
-
-const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
     <article
       className="border border-[#8B5A3C] bg-[#FAF6F2] rounded-lg overflow-hidden w-full"
@@ -98,11 +21,13 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
           fill
           className="object-cover"
           sizes="100vw"
-          priority={project.id <= 2}
+          loading={project.id <= 2 ? "eager" : "lazy"}
           itemProp="image"
         />
         <div className="absolute top-3 left-3 flex items-center gap-1 bg-[#8B5A3C] text-white text-xs px-2 py-1 rounded">
-          {project.icon}
+          <span className="text-white w-4 h-4 flex items-center justify-center">
+            {project.icon}
+          </span>
           <span itemProp="serviceType">{project.category}</span>
         </div>
       </div>
@@ -123,14 +48,20 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
 
 const ProjectSection: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const projectsPerPage = 3;
+  const projectsPerPage: number = 3;
 
-  // Pagination Logic
-  const indexOfLast = currentPage * projectsPerPage;
-  const indexOfFirst = indexOfLast - projectsPerPage;
-  const currentProjects = projects.slice(indexOfFirst, indexOfLast);
+  const indexOfLast: number = currentPage * projectsPerPage;
+  const indexOfFirst: number = indexOfLast - projectsPerPage;
+  const currentProjects: Project[] = projects.slice(indexOfFirst, indexOfLast);
+  const totalPages: number = Math.ceil(projects.length / projectsPerPage);
 
-  const totalPages = Math.ceil(projects.length / projectsPerPage);
+  const handlePreviousPage = (): void => {
+    setCurrentPage((prev) => Math.max(prev - 1, 1));
+  };
+
+  const handleNextPage = (): void => {
+    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+  };
 
   return (
     <section
@@ -156,16 +87,13 @@ const ProjectSection: React.FC = () => {
           </p>
         </header>
 
-        {/* Projects Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {currentProjects.map((project) => (
+          {currentProjects.map((project: Project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </div>
 
-        {/* Pagination Controls */}
         <div className="flex flex-col sm:flex-row justify-between items-center mt-10 gap-4">
-          {/* Left Side Info */}
           <div className="text-sm text-[#5C4033] text-center sm:text-left">
             Showing{" "}
             <span className="font-semibold">
@@ -174,26 +102,29 @@ const ProjectSection: React.FC = () => {
             of <span className="font-semibold">{projects.length}</span> projects
           </div>
 
-          {/* Right Side Controls */}
           <div className="flex items-center gap-3">
             <button
-              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+              onClick={handlePreviousPage}
               disabled={currentPage === 1}
-              className="flex items-center gap-1 px-3 py-1 border border-[#8B5A3C] rounded text-[#8B5A3C] text-sm disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+              className="flex items-center gap-1 px-3 py-1 border border-[#8B5A3C] rounded text-[#8B5A3C] text-sm disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#8B5A3C] hover:text-white transition-colors duration-200"
+              aria-label="Go to previous page"
+              type="button"
             >
-              <ChevronLeft className="w-4 h-4" />
-              Prev
+              <ChevronLeft className="w-4 h-4" /> Prev
             </button>
 
+            <span className="text-sm text-[#5C4033] px-2">
+              Page {currentPage} of {totalPages}
+            </span>
+
             <button
-              onClick={() =>
-                setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-              }
+              onClick={handleNextPage}
               disabled={currentPage === totalPages}
-              className="flex items-center gap-1 px-3 py-1 border border-[#8B5A3C] rounded text-[#8B5A3C] text-sm disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+              className="flex items-center gap-1 px-3 py-1 border border-[#8B5A3C] rounded text-[#8B5A3C] text-sm disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#8B5A3C] hover:text-white transition-colors duration-200"
+              aria-label="Go to next page"
+              type="button"
             >
-              Next
-              <ChevronRight className="w-4 h-4" />
+              Next <ChevronRight className="w-4 h-4" />
             </button>
           </div>
         </div>
