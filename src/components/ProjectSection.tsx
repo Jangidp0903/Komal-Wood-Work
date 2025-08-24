@@ -1,3 +1,4 @@
+// components/ProjectSection.tsx
 import React, { useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -14,7 +15,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       itemScope
       itemType="https://schema.org/Service"
     >
-      <div className="relative w-full h-48 md:h-60 lg:h-64 xl:h-72">
+      <div className="relative w-full h-48 md:h-60 lg:h-64 xl:h-72 group">
         <Image
           src={project.image}
           alt={`${project.title} by Expert Interior Designers`}
@@ -24,23 +25,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           loading={project.id <= 2 ? "eager" : "lazy"}
           itemProp="image"
         />
-        <div className="absolute top-3 left-3 flex items-center gap-1 bg-[#8B5A3C] text-white text-xs px-2 py-1 rounded">
-          <span className="text-white w-4 h-4 flex items-center justify-center">
-            {project.icon}
-          </span>
-          <span itemProp="serviceType">{project.category}</span>
-        </div>
-      </div>
-      <div className="p-4">
-        <h2 className="text-lg font-bold text-[#8B5A3C] mb-2" itemProp="name">
-          {project.title}
-        </h2>
-        <p
-          className="text-sm text-[#5C4033] leading-relaxed"
-          itemProp="description"
+
+        {/* Title overlay - always visible on mobile, slide-up on hover for larger screens */}
+        <div
+          className="absolute bottom-0 left-0 w-full bg-[#8B5A3C]/80 text-white px-4 py-2
+          sm:transform sm:translate-y-full sm:opacity-0
+          sm:group-hover:translate-y-0 sm:group-hover:opacity-100
+          transition-all duration-500 ease-in-out"
         >
-          {project.description}
-        </p>
+          <h2 className="text-base sm:text-lg font-bold" itemProp="name">
+            {project.title}
+          </h2>
+        </div>
       </div>
     </article>
   );
@@ -71,9 +67,10 @@ const ProjectSection: React.FC = () => {
       itemType="https://schema.org/Service"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
         <header className="text-center mb-12">
           <h2
-            className="text-3xl md:text-4xl font-bold text-[#8B5A3C]"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#8B5A3C]"
             itemProp="name"
           >
             Custom Interior Furniture Services
@@ -82,17 +79,19 @@ const ProjectSection: React.FC = () => {
             className="text-sm md:text-base text-[#5C4033] mt-3 max-w-2xl mx-auto"
             itemProp="description"
           >
-            From modular kitchens to custom sofas, explore how we transform
-            interiors with functional, stylish furniture made just for you.
+            Explore our range of custom furniture projects that bring style and
+            functionality to your interiors.
           </p>
         </header>
 
+        {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {currentProjects.map((project: Project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </div>
 
+        {/* Pagination */}
         <div className="flex flex-col sm:flex-row justify-between items-center mt-10 gap-4">
           <div className="text-sm text-[#5C4033] text-center sm:text-left">
             Showing{" "}
