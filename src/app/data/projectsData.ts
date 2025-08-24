@@ -7,6 +7,8 @@ import Sofaa from "../../../public/sofa.png";
 import Bathroom from "../../../public/bathroom.png";
 import Office from "../../../public/office.png";
 import Interior from "../../../public/interior.png";
+import Project1 from "../../../public/project1.webp";
+import Project2 from "../../../public/project2.webp";
 
 export interface Project {
   id: number;
@@ -44,5 +46,15 @@ export const projects: Project[] = [
     id: 6,
     title: "Full Interior Projects",
     image: Interior,
+  },
+  {
+    id: 7,
+    title: "Full Interior Projects",
+    image: Project1,
+  },
+  {
+    id: 8,
+    title: "Full Interior Projects",
+    image: Project2,
   },
 ];

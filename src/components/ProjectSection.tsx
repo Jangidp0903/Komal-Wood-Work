@@ -15,17 +15,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       itemScope
       itemType="https://schema.org/Service"
     >
-      <div className="relative w-full h-48 md:h-60 lg:h-64 xl:h-72 group">
+      <div className="relative w-full h-72 group">
+        {" "}
+        {/* Same height on all devices */}
         <Image
           src={project.image}
           alt={`${project.title} by Expert Interior Designers`}
           fill
           className="object-cover"
           sizes="100vw"
-          loading={project.id <= 2 ? "eager" : "lazy"}
+          loading="lazy"
           itemProp="image"
         />
-
         {/* Title overlay - always visible on mobile, slide-up on hover for larger screens */}
         <div
           className="absolute bottom-0 left-0 w-full bg-[#8B5A3C]/80 text-white px-4 py-2
