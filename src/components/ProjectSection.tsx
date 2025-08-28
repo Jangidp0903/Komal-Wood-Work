@@ -25,7 +25,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           src={project.image}
           alt="Custom interior furniture project"
           fill
-          className="object-cover transition-transform duration-300 group-hover:scale-105 cursor-pointer"
+          className="object-cover transition-transform duration-300 cursor-pointer"
           sizes="100vw"
           loading="lazy"
           itemProp="image"
