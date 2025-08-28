@@ -15,7 +15,7 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
     <article
-      className="border border-[#8B5A3C] bg-[#FAF6F2] rounded-lg overflow-hidden w-full cursor-pointer hover:shadow-lg transition-shadow duration-300"
+      className="border border-[#8B5A3C] bg-[#FAF6F2] rounded-lg overflow-hidden w-full cursor-pointer duration-300"
       itemScope
       itemType="https://schema.org/Service"
     >
